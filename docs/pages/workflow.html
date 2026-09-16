@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The complete operational path from Gmail authentication through export, human review, delivery, and archive.">
+<title>Workflow | Email Automation</title>
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script defer src="../assets/js/site.js"></script>
+</head>
+<body data-page="workflow">
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html"><span>Email Automation</span><small>Python Documentation</small></a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">Menu</button>
+    
+<nav class="site-nav" aria-label="Primary">
+  <a href="../index.html">Overview</a>
+  <a href="workflow.html">Workflow</a>
+  <a href="architecture.html">Architecture</a>
+  <a href="usage.html">Using the Application</a>
+  <a href="logging.html">Logging & Recovery</a>
+  <a href="decisions.html">Design Decisions</a>
+  <a href="examples.html">Examples</a>
+</nav>
+  </div>
+</header>
+<main>
+<section class="page-hero compact">
+  <div class="wrap">
+    <p class="kicker">EMAIL AUTOMATION · PYTHON</p>
+    <h1>Workflow</h1>
+    <p class="lead">The complete operational path from Gmail authentication through export, human review, delivery, and archive.</p>
+  </div>
+</section>
+
+<section class="section"><div class="wrap"><div class="content">
+<div class="callout"><strong>Intentional boundary</strong><p>The application does not run every step automatically. Export, review, and send are separate on purpose so generated content can be checked before delivery.</p></div>
+<div class="step"><span>0</span><div><h2>Authenticate</h2><pre><code>python -m src auth</code></pre><p>Authenticates Gmail access and generates the local <code>token.json</code> used by the application.</p></div></div>
+<div class="step"><span>1</span><div><h2>Export</h2><pre><code>python -m src export --format text</code></pre><p>The application reads messages from the configured source label and exports each selected email into the <code>processed_review/</code> workspace.</p><p>At this point, the repetitive retrieval and file-generation work is complete, but nothing has been sent.</p></div></div>
+<div class="step review-step"><span>2</span><div><h2>Review</h2><p>The generated files are opened and reviewed. Formatting or extra text can be corrected before anything leaves the local review workspace.</p><p>This checkpoint is a safety feature, not an unfinished automation step.</p></div></div>
+<div class="step"><span>3</span><div><h2>Send</h2><pre><code>python -m src send</code></pre><p>Reviewed files are grouped into a ZIP batch, sent, and then moved out of the review folder into the archive after successful delivery.</p></div></div>
+<div class="next-links"><a href="usage.html"><small>SEE IT IN PRACTICE</small><strong>Real-world usage →</strong></a><a href="logging.html"><small>WHEN SOMETHING FAILS</small><strong>Logging & recovery →</strong></a></div>
+</div></div></section>
+</main>
+<footer><div class="wrap footer-grid"><div><strong>Email Automation</strong><p>Python project documentation</p></div><p>Designed for clear project understanding, day-to-day use, and long-term maintenance.</p></div></footer>
+</body></html>

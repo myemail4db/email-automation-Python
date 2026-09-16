@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="What the Python workflow looks like in day-to-day use, from labeling an email to sending a reviewed batch.">
+<title>Using the Application | Email Automation</title>
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script defer src="../assets/js/site.js"></script>
+</head>
+<body data-page="usage">
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html"><span>Email Automation</span><small>Python Documentation</small></a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">Menu</button>
+    
+<nav class="site-nav" aria-label="Primary">
+  <a href="../index.html">Overview</a>
+  <a href="workflow.html">Workflow</a>
+  <a href="architecture.html">Architecture</a>
+  <a href="usage.html">Using the Application</a>
+  <a href="logging.html">Logging & Recovery</a>
+  <a href="decisions.html">Design Decisions</a>
+  <a href="examples.html">Examples</a>
+</nav>
+  </div>
+</header>
+<main>
+<section class="page-hero compact">
+  <div class="wrap">
+    <p class="kicker">EMAIL AUTOMATION · PYTHON</p>
+    <h1>Using the Application</h1>
+    <p class="lead">What the Python workflow looks like in day-to-day use, from labeling an email to sending a reviewed batch.</p>
+  </div>
+</section>
+
+<section class="section"><div class="wrap"><div class="content">
+<h2>A normal day with the application</h2>
+<p>The workflow begins in Gmail. Useful messages are marked with the configured source label:</p>
+<pre><code>for_friend</code></pre>
+<p>No formatting or cleanup is required at this stage. The label simply identifies what should enter the next batch.</p>
+<h2>Run the export</h2><pre><code>python -m src export --format text</code></pre>
+<p>The application pulls the labeled messages and turns each one into its own file. After export, the working location becomes:</p><pre><code>processed_review/</code></pre>
+<h2>Review the generated files</h2>
+<p>The generated content is usually close to the desired result, but the workflow assumes that a person may still want to adjust formatting or remove unnecessary text. The review is intentionally quick and intentionally retained.</p>
+<h2>Send the reviewed batch</h2><pre><code>python -m src send</code></pre>
+<p>The reviewed files are grouped into a batch, sent, and moved out of the review workspace after successful delivery. The workspace is ready for the next run.</p>
+<h2>What changes for the user</h2>
+<div class="compare"><div><h3>Before</h3><p>Open email → copy content → paste into document → rename file → repeat → remember what was already processed.</p></div><div><h3>With the application</h3><p>Label emails → export → review → send.</p></div></div>
+<h2>When something goes wrong</h2>
+<p>A failed item can be identified through the error output or logs instead of requiring the entire batch to be manually reconstructed.</p>
+<div class="next-links"><a href="examples.html"><small>SEE THE OUTPUT</small><strong>Generated examples →</strong></a><a href="logging.html"><small>SUPPORT</small><strong>Trace a run →</strong></a></div>
+</div></div></section>
+</main>
+<footer><div class="wrap footer-grid"><div><strong>Email Automation</strong><p>Python project documentation</p></div><p>Designed for clear project understanding, day-to-day use, and long-term maintenance.</p></div></footer>
+</body></html>

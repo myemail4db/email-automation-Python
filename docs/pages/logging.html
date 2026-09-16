@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="How batch IDs, item-level status, run boundaries, and error isolation make the workflow easier to support.">
+<title>Logging &amp; Recovery | Email Automation</title>
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script defer src="../assets/js/site.js"></script>
+</head>
+<body data-page="logging">
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html"><span>Email Automation</span><small>Python Documentation</small></a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">Menu</button>
+    
+<nav class="site-nav" aria-label="Primary">
+  <a href="../index.html">Overview</a>
+  <a href="workflow.html">Workflow</a>
+  <a href="architecture.html">Architecture</a>
+  <a href="usage.html">Using the Application</a>
+  <a href="logging.html">Logging & Recovery</a>
+  <a href="decisions.html">Design Decisions</a>
+  <a href="examples.html">Examples</a>
+</nav>
+  </div>
+</header>
+<main>
+<section class="page-hero compact">
+  <div class="wrap">
+    <p class="kicker">EMAIL AUTOMATION · PYTHON</p>
+    <h1>Logging &amp; Recovery</h1>
+    <p class="lead">How batch IDs, item-level status, run boundaries, and error isolation make the workflow easier to support.</p>
+  </div>
+</section>
+
+<section class="section"><div class="wrap"><div class="content">
+<h2>Designed to answer one question</h2>
+<div class="quote">What happened during this run?</div>
+<p>Every run uses a unique batch ID. That identifier creates a thread through the activity so a maintainer can distinguish one execution from another.</p>
+<h2>Run structure</h2>
+<div class="log-example"><code>[RUN START][job_batch_20260403_211500]<br>Processed : 2<br>Success : 1<br>Failed : 1<br>[RUN END]</code></div>
+<p>A batch contains a start boundary, per-item activity, and an end summary. This makes the execution understandable without relying on memory.</p>
+<h2>Item tracking</h2>
+<div class="decision-list"><div><strong>Status</strong><span>SUCCESS, ERROR, or SENT.</span></div><div><strong>Identity</strong><span>Subject or filename associated with the item.</span></div><div><strong>Stage</strong><span>Where the item was when the event occurred.</span></div><div><strong>Timestamp</strong><span>When the event occurred.</span></div></div>
+<h2>Error handling and recovery</h2>
+<p>Errors are categorized, logged, and isolated from successful items. Processing continues when possible. This means one failed item does not automatically erase the value of the rest of the batch.</p>
+<div class="callout"><strong>Supportability matters</strong><p>The logs and folders are part of the workflow itself. They reduce the need to guess whether an email was processed, sent, skipped, or failed.</p></div>
+<div class="next-links"><a href="examples.html"><small>PROJECT EVIDENCE</small><strong>View error output →</strong></a><a href="decisions.html"><small>WHY THIS EXISTS</small><strong>Structured logging decision →</strong></a></div>
+</div></div></section>
+</main>
+<footer><div class="wrap footer-grid"><div><strong>Email Automation</strong><p>Python project documentation</p></div><p>Designed for clear project understanding, day-to-day use, and long-term maintenance.</p></div></footer>
+</body></html>

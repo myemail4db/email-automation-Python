@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The reasoning behind batch processing, Gmail labels, manual review, external configuration, and structured logging.">
+<title>Design Decisions | Email Automation</title>
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script defer src="../assets/js/site.js"></script>
+</head>
+<body data-page="decisions">
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html"><span>Email Automation</span><small>Python Documentation</small></a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">Menu</button>
+    
+<nav class="site-nav" aria-label="Primary">
+  <a href="../index.html">Overview</a>
+  <a href="workflow.html">Workflow</a>
+  <a href="architecture.html">Architecture</a>
+  <a href="usage.html">Using the Application</a>
+  <a href="logging.html">Logging & Recovery</a>
+  <a href="decisions.html">Design Decisions</a>
+  <a href="examples.html">Examples</a>
+</nav>
+  </div>
+</header>
+<main>
+<section class="page-hero compact">
+  <div class="wrap">
+    <p class="kicker">EMAIL AUTOMATION · PYTHON</p>
+    <h1>Design Decisions</h1>
+    <p class="lead">The reasoning behind batch processing, Gmail labels, manual review, external configuration, and structured logging.</p>
+  </div>
+</section>
+
+<section class="section"><div class="wrap"><div class="content">
+<p class="intro">The system emphasizes traceability, repeatability, and controlled automation over raw speed. These decisions shape both the user experience and the way the application can be supported later.</p>
+<div class="decision"><h2>Why batch processing?</h2><p>Emails are processed as a unit of work rather than as unrelated one-off actions. A batch has a clear beginning and end, which makes execution easier to trace when something fails.</p><ul><li>Consistent execution</li><li>Easier tracking</li><li>Clear run boundaries</li></ul></div>
+<div class="decision"><h2>Why Gmail labels?</h2><p>Labels act as the workflow control mechanism. The application processes only the messages deliberately placed into the source label instead of scanning the entire inbox.</p></div>
+<div class="decision highlight"><h2>Why keep manual review?</h2><p>Automation stops before sending so generated content can be checked. The boundary prevents accidental sends, incorrect formatting, and incomplete data from being shared.</p><div class="mini-flow">Export <b>→</b> Review <b>→</b> Send</div></div>
+<div class="decision"><h2>Why external configuration?</h2><p>Environment-specific behavior is externalized so normal configuration changes do not require source-code edits. This makes setup safer and keeps application logic separate from deployment values.</p></div>
+<div class="decision"><h2>Why structured logging?</h2><p>Each run includes a batch ID, start and end boundaries, and per-item tracking. The purpose is practical: understand what happened without guessing.</p></div>
+<div class="next-links"><a href="architecture.html"><small>SYSTEM VIEW</small><strong>Architecture →</strong></a><a href="logging.html"><small>OPERATIONS</small><strong>Logging & recovery →</strong></a></div>
+</div></div></section>
+</main>
+<footer><div class="wrap footer-grid"><div><strong>Email Automation</strong><p>Python project documentation</p></div><p>Designed for clear project understanding, day-to-day use, and long-term maintenance.</p></div></footer>
+</body></html>

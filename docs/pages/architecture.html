@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="How the workflow is structured, why it exists, and how the design supports traceability and maintenance.">
+<title>Architecture | Email Automation</title>
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script defer src="../assets/js/site.js"></script>
+</head>
+<body data-page="architecture">
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html"><span>Email Automation</span><small>Python Documentation</small></a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">Menu</button>
+    
+<nav class="site-nav" aria-label="Primary">
+  <a href="../index.html">Overview</a>
+  <a href="workflow.html">Workflow</a>
+  <a href="architecture.html">Architecture</a>
+  <a href="usage.html">Using the Application</a>
+  <a href="logging.html">Logging & Recovery</a>
+  <a href="decisions.html">Design Decisions</a>
+  <a href="examples.html">Examples</a>
+</nav>
+  </div>
+</header>
+<main>
+<section class="page-hero compact">
+  <div class="wrap">
+    <p class="kicker">EMAIL AUTOMATION · PYTHON</p>
+    <h1>Architecture</h1>
+    <p class="lead">How the workflow is structured, why it exists, and how the design supports traceability and maintenance.</p>
+  </div>
+</section>
+
+<section class="section"><div class="wrap">
+<div class="toc"><strong>On this page</strong><a href="#problem">Problem</a><a href="#impact">Impact</a><a href="#solution">Solution</a><a href="#principles">Design principles</a><a href="#diagram">System diagram</a></div>
+<div class="content">
+<h2 id="problem">The problem</h2>
+<p>Handling job-related emails manually works at first, but becomes difficult as volume grows. The work includes reviewing messages one by one, copying content into documents, naming files, and remembering what has already been processed.</p>
+<div class="callout"><strong>The operational question:</strong><p>What happened during this batch?</p></div>
+<h2 id="impact">The impact of an unstructured process</h2>
+<div class="cards two"><article class="card"><h3>Consistency</h3><p>Emails can be skipped or duplicated, and file naming can vary across batches.</p></article><article class="card"><h3>Supportability</h3><p>Failures may not be noticed until later, debugging requires manual investigation, and there is no useful audit trail.</p></article></div>
+<h2 id="solution">The solution</h2>
+<p>The project introduces a structured automation pipeline:</p>
+<div class="pipeline"><span>Gmail</span><b>→</b><span>Export</span><b>→</b><span class="review">Review</span><b>→</b><span>ZIP</span><b>→</b><span>Send</span><b>→</b><span>Archive</span></div>
+<p>Controlled Gmail labels define input. Files are generated consistently. Batch execution creates clear boundaries. Logs provide traceability, while failed items can be isolated without obscuring successful work.</p>
+<h2 id="principles">Design principles</h2>
+<div class="decision-list">
+<div><strong>Batch IDs</strong><span>Trace one run from start to finish.</span></div>
+<div><strong>Structured logs</strong><span>Understand activity without reconstructing events manually.</span></div>
+<div><strong>Run boundaries</strong><span>Make each execution a clear unit of work.</span></div>
+<div><strong>Error categorization</strong><span>Reduce the time required to locate a failure.</span></div>
+<div><strong>Configuration-driven behavior</strong><span>Change environment-specific values without editing application logic.</span></div>
+</div>
+<h2 id="diagram">System diagram</h2>
+<figure class="diagram"><img src="../assets/images/system-flow.png" alt="Email Automation system flow diagram"><figcaption>Original project system-flow diagram included with the Python documentation.</figcaption></figure>
+<div class="next-links"><a href="workflow.html"><small>NEXT TOPIC</small><strong>Walk through the workflow →</strong></a><a href="decisions.html"><small>RELATED</small><strong>Why the system is designed this way →</strong></a></div>
+</div></div></section>
+</main>
+<footer><div class="wrap footer-grid"><div><strong>Email Automation</strong><p>Python project documentation</p></div><p>Designed for clear project understanding, day-to-day use, and long-term maintenance.</p></div></footer>
+</body></html>

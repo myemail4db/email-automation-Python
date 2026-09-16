@@ -1,0 +1,60 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Professional documentation for the Python Email Automation project."><title>Email Automation | Python Documentation</title><link rel="stylesheet" href="assets/css/styles.css"><script defer src="assets/js/site.js"></script></head><body><header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span>Email Automation</span><small>Python Documentation</small></a><button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">Menu</button>
+<nav class="site-nav" aria-label="Primary">
+  <a href="index.html">Overview</a>
+  <a href="pages/workflow.html">Workflow</a>
+  <a href="pages/architecture.html">Architecture</a>
+  <a href="pages/usage.html">Using the Application</a>
+  <a href="pages/logging.html">Logging & Recovery</a>
+  <a href="pages/decisions.html">Design Decisions</a>
+  <a href="pages/examples.html">Examples</a>
+</nav></div></header><main>
+<section class="home-hero">
+<div class="wrap hero-grid">
+  <div>
+    <p class="kicker">EMAIL AUTOMATION · PYTHON</p>
+    <h1>A controlled workflow for processing email at scale.</h1>
+    <p class="lead">A Python automation project that replaces repetitive copy, paste, file naming, tracking, packaging, and delivery steps with a traceable workflow that keeps human review in the loop.</p>
+    <div class="actions"><a class="btn primary" href="pages/workflow.html">Explore the workflow</a><a class="btn" href="pages/architecture.html">View architecture</a></div>
+  </div>
+  <aside class="impact-panel">
+    <span class="metric-label">Measured workflow impact</span>
+    <strong>~12 hours <span>→</span> ~90 minutes</strong>
+    <p>The automation reduced the manual review workload while keeping a deliberate review step before delivery.</p>
+  </aside>
+</div>
+</section>
+
+<section class="section"><div class="wrap">
+<div class="section-heading"><p class="kicker">PROJECT AT A GLANCE</p><h2>Why the project exists</h2></div>
+<div class="cards three">
+<article class="card"><h3>The problem</h3><p>Manual processing became difficult to scale. Emails could be skipped or duplicated, file naming became inconsistent, and failures required manual investigation.</p><a class="text-link" href="architecture.html#problem">Understand the problem →</a></article>
+<article class="card"><h3>The solution</h3><p>The application uses Gmail labels, repeatable export steps, a manual review checkpoint, ZIP packaging, sending, archiving, batch IDs, and structured logs.</p><a class="text-link" href="pages/workflow.html">Follow an email through the system →</a></article>
+<article class="card"><h3>The design focus</h3><p>Traceability, repeatability, and controlled automation take priority over automating every possible step.</p><a class="text-link" href="pages/decisions.html">Explore the engineering decisions →</a></article>
+</div>
+</div></section>
+
+<section class="section tint"><div class="wrap">
+<div class="section-heading"><p class="kicker">SYSTEM FLOW</p><h2>One workflow, clear boundaries</h2><p>Each stage has a specific purpose, and the review step is intentionally separate from sending.</p></div>
+<div class="pipeline" aria-label="Gmail to archive workflow">
+<span>Gmail</span><b>→</b><span>Export</span><b>→</b><span class="review">Review</span><b>→</b><span>ZIP</span><b>→</b><span>Send</span><b>→</b><span>Archive</span>
+</div>
+<div class="center"><a class="btn" href="pages/workflow.html">See the complete workflow</a></div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="section-heading"><p class="kicker">EXPLORE THE PROJECT</p><h2>Go directly to the topic you need</h2><p>The documentation is intentionally non-linear. Each section stands on its own and links to related details.</p></div>
+<div class="cards explore-grid">
+<a class="topic-card" href="pages/workflow.html"><small>PROCESS</small><h3>Workflow</h3><p>Authentication, export, review, send, and archive.</p></a>
+<a class="topic-card" href="pages/architecture.html"><small>SYSTEM</small><h3>Architecture</h3><p>Problem, system structure, design principles, and traceability.</p></a>
+<a class="topic-card" href="pages/usage.html"><small>OPERATIONS</small><h3>Using the Application</h3><p>What running the workflow looks like in practice.</p></a>
+<a class="topic-card" href="pages/logging.html"><small>SUPPORTABILITY</small><h3>Logging & Recovery</h3><p>Batch tracking, item status, errors, and recovery.</p></a>
+<a class="topic-card" href="pages/decisions.html"><small>ENGINEERING</small><h3>Design Decisions</h3><p>Why batches, labels, manual review, configuration, and logs matter.</p></a>
+<a class="topic-card" href="pages/examples.html"><small>EVIDENCE</small><h3>Examples</h3><p>Generated TXT, DOCX, error output, and the system-flow diagram.</p></a>
+</div>
+</div></section>
+
+<section class="section dark"><div class="wrap split">
+<div><p class="kicker light">A QUESTION THE DESIGN KEEPS ANSWERING</p><h2>“What happened during this run, and can I trust it?”</h2></div>
+<p>Batch IDs, run boundaries, structured logs, error isolation, controlled input, and a review checkpoint all support that question. The result is not simply faster processing. It is a workflow that is easier to understand, verify, and maintain.</p>
+</div></section>
+</main><footer><div class="wrap footer-grid"><div><strong>Email Automation</strong><p>Python project documentation</p></div><p>Professional project documentation for understanding the system, using it, and maintaining it.</p></div></footer></body></html>
